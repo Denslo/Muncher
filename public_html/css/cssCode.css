@@ -14,10 +14,18 @@ and open the template in the editor.
 }
 
 #sweet_label{
-    padding-left: 75px;
+    padding-left: 30px;
 }
 
 #white_table,#black_table{
 
     display: none;
+}
+
+input.ui-slider-input{
+    display:none !important;
+}
+
+div.ui-slider-track{
+    margin-left: 15px !important;
 }
