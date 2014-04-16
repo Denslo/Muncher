@@ -1,15 +1,115 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
     <head>
+        <title>Muncher</title>
         <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="1; url=login.html">
-        <script type="text/javascript">
-            window.location.href = "login.html";
-        </script>
-        <title>Page Redirection</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="js/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css" />
+        <link rel="stylesheet" href="css/cssCode.css" />
+        <script src="js/jQuery1.11.0.js"></script>
+        <script src="js/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        <script src="js/javaScriptCode.js"></script>
+        <script src="js/jquery.ui.addresspicker.js"></script>
     </head>
     <body>
-        <!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
-        If you are not redirected automatically, follow the <a href='login.html'>link to example</a>
-    </body>
-</html>
+        <div data-role="page" id="login">
+            <div data-role="header">
+                <h1>Hi and welcome to Muncher</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <div class="ui-field-contain">
+                    <h2>Mandatory field</h2>
+                    <label for='phone_number'>Phone Number:</label>
+                    <input id='phone_number' type="tel" placeholder='0526642372'><br>
+
+                    <br><h2>Optional fields</h2>
+                    <label for='frist_name'>First Name:</label>
+                    <input id='frist_name' type="text" placeholder='Jon'><br>
+
+                    <label for='last_name'>Last Name:</label>
+                    <input id='last_name' type="text" placeholder='Doue'><br>
+
+                    <label for='phone_number'>Email:</label>
+                    <input id='phone_number' type="email" name="fname" placeholder='aaa@exemple.com'><br>
+                </div>
+
+                <button id="b1" onclick='login()'>Login</button>
+            </div>
+        </div>
+
+        <div data-role="page" id="page_order_type">
+            <div data-role="header">
+                <h1>here will be a nav bar</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <button id="b1" onclick='goToOrderFromList()'>Order From List</button>
+                <button id="b1" onclick='goToOrderSurpriseBox()'>Surprise Me</button>
+            </div>
+
+            <div data-role="footer">
+                <h1>here will be a nav bar</h1>
+            </div>
+        </div> 
+
+        <div data-role="page" id="surprise_box">
+            <div data-role="header">
+                <h1>here will be a nav bar</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <h2>sweet salt amount in box</h2>
+                <label id='salt_sweet_label' for="salt_sweet_slider"><span id='sweet_label'>Sweet</span><span id='salt_label'>Salt</span></label>
+                <input id='salt_sweet_slider' data-highlight="true" type="range" value="50" min="0" max="100">
+
+                <h2>include\exclude items from the box</h2>
+                <label for="white_switch">white List - include the following items</label>
+                <input type="checkbox" name="switch" id="white_switch" onclick="toggleTable(white_table)"><br>
+                <table id='white_table'>
+                    <tr>
+                        <th>ID</th>
+                        <th>Img</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Is Selected</th>
+                    </tr>
+                </table><br>
+                <label for="black_switch">Black List - exclude the following items</label>
+                <input type="checkbox" name="switch" id="black_switch" onclick="toggleTable(black_table)"><br>
+                <table id='black_table'>
+                    <tr>
+                        <th>ID</th>
+                        <th>Img</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Is Selected</th>
+                    </tr>
+                </table><br>
+                <button onclick='goToAddres()'>Next</button>
+            </div>
+
+            <div data-role="footer">
+                <h1>here will be a nav bar</h1>
+            </div>
+        </div>
+
+        <div data-role="page" id="addres">
+            <div data-role="header">
+                <h1>here will be a nav bar</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <input id="addresspicker_map" placeholder='Type in your addres...' />
+            </div>
+
+            <div data-role="footer">
+                <h1>here will be a nav bar</h1>
+                </
+                </body>
+                </html>
