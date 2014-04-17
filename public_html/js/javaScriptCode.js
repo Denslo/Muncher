@@ -108,4 +108,4 @@ $(function() {
 
 $(function() {
     $('#map_canvas').height($(window).height() * 0.65);
-})
+});
