@@ -20,6 +20,7 @@ and open the template in the editor.
 
     </head>
     <body>
+
         <div data-role="page" id="login">
             <div data-role="header">
                 <h1>Login</h1>
@@ -44,7 +45,7 @@ and open the template in the editor.
 
                 <button id="b1" onclick='login()'>Login</button>
             </div>
-            
+
             <div data-role="footer">
                 <h1>here will be a nav bar</h1>
             </div>
@@ -70,18 +71,21 @@ and open the template in the editor.
             <div data-role="header">
                 <a href="index.html" data-icon="back" data-rel="back">back</a>
                 <h1>Shopping List</h1>
-                <a href="#right-panel" data-icon="plus" class="ui-icon-nodisc">previous orders</a>
+                <a href="#right-panel-slist" data-icon="plus" class="ui-icon-nodisc">previous orders</a>
             </div>
 
             <div data-role="main" class="ui-content">
-                <table id='shopping_list_table'>
+                <form class="ui-filterable">
+                    <input id="shoping_list_filter" data-type="search" placeholder="Search..">
+                </form>
+
+                <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#shoping_list_filter">
                     <tr>
                         <th>ID</th>
                         <th>Img</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Is Selected</th>
-                        <th>amount</th>
+                        <th>Amount</th>
                     </tr>
                 </table>
                 <button onclick='goToAddres()'>Next</button>
@@ -91,7 +95,7 @@ and open the template in the editor.
                 <h1>here will be a nav bar</h1>
             </div>
 
-            <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-theme="c">
+            <div data-role="panel" id="right-panel-slist" data-display="overlay" data-position="right" data-theme="c">
                 <p>no previous orders</p>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->
@@ -101,37 +105,67 @@ and open the template in the editor.
             <div data-role="header">
                 <a href="index.html" data-icon="back" data-rel="back">back</a>
                 <h1>Suprise Box</h1>
-                <a href="#right-panel" data-icon="plus" class="ui-icon-nodisc">previous orders</a>
+                <a href="#right-panel-sbox" data-icon="plus" class="ui-icon-nodisc">previous orders</a>
             </div>
 
             <div data-role="main" class="ui-content">
                 <h2>sweet salt amount in box</h2>
                 <label id='salt_sweet_label' for="salt_sweet_slider"><span id='sweet_label'>Sweet</span><span id='salt_label'>Salt</span></label>
-                <input id='salt_sweet_slider' data-highlight="true" type="range" value="50" min="0" max="100" data-popup-enabled="true">
+                <input id='salt_sweet_slider' data-highlight="false" type="range" value="50" min="0" max="100" data-popup-enabled="false">
+
+                <div class="ui-field-contain">
+                    <label for='sweet_pr'>Sweet %:</label>
+                    <input id='sweet_pr' type='number' readonly='readonly'><br>
+                    <label for='salt_pr'>Salt %:</label>
+                    <input id='salt_pr' type="number" readonly='readonly'><br>
+                </div>
+
+                <h2>Coast</h2>
+                <div class="ui-field-contain">
+                    <label for='cost'>Box coast:</label>
+                    <input id='cost' type='number' value="200"><br>
+                </div>
 
                 <h2>include\exclude items from the box</h2>
-                <label for="white_switch">white List - include the following items</label>
-                <input type="checkbox" name="switch" id="white_switch" onclick="toggleTable(white_table)"><br>
-                <table id='white_table'>
-                    <tr>
-                        <th>ID</th>
-                        <th>Img</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Is Selected</th>
-                    </tr>
-                </table><br>
-                <label for="black_switch">Black List - exclude the following items</label>
-                <input type="checkbox" name="switch" id="black_switch" onclick="toggleTable(black_table)"><br>
-                <table id='black_table'>
-                    <tr>
-                        <th>ID</th>
-                        <th>Img</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Is Selected</th>
-                    </tr>
-                </table><br>
+
+                <div data-role="collapsible-set">
+
+                    <div data-role="collapsible">
+                        <h3>include list</h3>
+                        <form class="ui-filterable">
+                            <input id="include" data-type="search" placeholder="Search..">
+                        </form>
+
+                        <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#include">
+                            <tr>
+                                <th>ID</th>
+                                <th>Img</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Is Selected</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div data-role="collapsible">
+                        <h3>exclude list</h3>
+                        <form class="ui-filterable">
+                            <input id="exclude" data-type="search" placeholder="Search..">
+                        </form>
+
+                        <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#exclude">
+                            <tr>
+                                <th>ID</th>
+                                <th>Img</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Is Selected</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
                 <button onclick='goToAddres()'>Next</button>
             </div>
 
@@ -139,7 +173,7 @@ and open the template in the editor.
                 <h1>here will be a nav bar</h1>
             </div>
 
-            <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-theme="c">
+            <div data-role="panel" id="right-panel-sbox" data-display="overlay" data-position="right" data-theme="c">
                 <p>no previous orders</p>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->
@@ -149,7 +183,7 @@ and open the template in the editor.
             <div data-role="header">
                 <a href="index.html" data-icon="back" data-rel="back">back</a>
                 <h1>Address</h1>
-                <a href="#right-panel" data-icon="plus" class="ui-icon-nodisc">previous address</a>
+                <a href="#right-panel-addres" data-icon="plus" class="ui-icon-nodisc">previous address</a>
             </div>
 
             <div data-role="main" class="ui-content">
@@ -162,7 +196,7 @@ and open the template in the editor.
                 <h1>here will be a nav bar</h1>
             </div>
 
-            <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-theme="c">
+            <div data-role="panel" id="right-panel-addres" data-display="overlay" data-position="right" data-theme="c">
                 <p>no previous address</p>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->

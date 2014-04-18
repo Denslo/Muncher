@@ -19,10 +19,6 @@ function goToAddres() {
     $.mobile.changePage("#addres", {transition: "slide"});
 }
 
-function toggleTable(tID) {
-    $(tID).slideToggle();
-}
-
 $(function() {
     $('#addres').on("pageshow", function() {
 
@@ -86,26 +82,19 @@ function submitOrder() {
 }
 
 $(function() {
-    $(document).on("pageinit", "#surprise_box", function() {
-        $(document).on("swipeleft swiperight", "#surprise_box", function(e) {
-            if ($.mobile.activePage.jqmData("panel") !== "open") {
-                if (e.type === "swipeleft") {
-                    $("#right-panel").panel("open");
-                }
-            }
-        });
-    });
-    $(document).on("pageinit", "#addres", function() {
-        $(document).on("swipeleft swiperight", "#addres", function(e) {
-            if ($.mobile.activePage.jqmData("panel") !== "open") {
-                if (e.type === "swipeleft") {
-                    $("#right-panel").panel("open");
-                }
-            }
-        });
-    });
-});
-
-$(function() {
     $('#map_canvas').height($(window).height() * 0.65);
 });
+
+$(document).on("pageshow", "#surprise_box", function() {
+    
+    updateSweetSalt();
+    
+    $("#salt_sweet_slider").on("slidestop", updateSweetSalt);
+});
+
+function updateSweetSalt(){
+    var cur =  parseInt($("#salt_sweet_slider").val());
+
+    $('#sweet_pr').val(100 - cur);
+    $('#salt_pr').val(cur);
+}
