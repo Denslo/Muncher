@@ -3,10 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function login() {
-    $.mobile.changePage("#page_order_type", {transition: "slide"});
-}
-
 function goToOrderFromList() {
     $.mobile.changePage("#shopping_list", {transition: "slide"});
 }
@@ -19,6 +15,7 @@ function goToAddres() {
     $.mobile.changePage("#addres", {transition: "slide"});
 }
 
+//load address page
 $(function() {
     $('#addres').on("pageshow", function() {
 
@@ -78,23 +75,65 @@ $(function() {
         });
     });
 });
+
 function submitOrder() {
 }
 
+//set dinamic height to map
 $(function() {
     $('#map_canvas').height($(window).height() * 0.65);
 });
 
+//sweet salt slider
 $(document).on("pageshow", "#surprise_box", function() {
-    
+
     updateSweetSalt();
-    
-    $("#salt_sweet_slider").on("slidestop", updateSweetSalt);
+
+    $("#salt_sweet_slider").on("change", updateSweetSalt);
 });
 
-function updateSweetSalt(){
-    var cur =  parseInt($("#salt_sweet_slider").val());
+//sweet salt slider
+function updateSweetSalt() {
+    var cur = parseInt($("#salt_sweet_slider").val());
 
     $('#sweet_pr').val(100 - cur);
     $('#salt_pr').val(cur);
+}
+
+var db;
+db = openDatabase("Muncher", "1.0", "muncher data base", "200000");
+db.transaction(function(tx) {
+    tx.executeSql('CREATE TABLE IF NOT EXISTS USER (user unique)');
+});
+
+var isFristTimeInLogIn = true;
+
+//outo login
+$(document).on("pageshow", "#login", function() {
+    db = openDatabase("Muncher", "1.0", "muncher data base", "200000");
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT user FROM USER', [], function(tx, result) {
+            if (result.rows.length > 0 && isFristTimeInLogIn) {
+                $('#phone_number').val(result.rows.item(result.rows.length -1).user);
+                login();
+            }
+            isFristTimeInLogIn = false;
+        });
+    });
+});
+
+function login() {
+    if ($('#phone_number').val() === '') {
+        $('#login_popup').popup('open', {positionTo: "#phone_number", transition: "flow"});
+    } else {
+        //ajax to server was true
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT user FROM USER where user =\'' + $('#phone_number').val() + '\'', [], function(tx, result) {
+                if (result.rows.length === 0) {
+                    tx.executeSql('INSERT INTO USER (user) VALUES (\"' + $('#phone_number').val() + '\")');
+                }
+            });
+        });
+        $.mobile.changePage("#page_order_type", {transition: "slide"});
+    }
 }
