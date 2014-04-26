@@ -31,7 +31,8 @@ $(function() {
                     draggable: true
                 },
                 mapOptions: {
-                    zoom: 18
+                    zoom: 18,
+                    disableDefaultUI: true
                 }
             };
             $("#geocomplete").geocomplete(options);
