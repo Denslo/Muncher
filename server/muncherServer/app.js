@@ -1,3 +1,6 @@
+//OpenShift varubles
+#!/bin/env node
+
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
@@ -7,8 +10,12 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//muncher path
+var muncher = require('./routes/muncher'); 
 
 var app = express();
+
+//OpenShift varubles
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+//handle muncher reqest
+app.use('/muncher', muncher);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
