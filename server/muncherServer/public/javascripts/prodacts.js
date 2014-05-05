@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
     var itemsForShoppingList = [];
-    var itemsForSupriseBox = [];
+    var itemsForInclude = [];
+    var itemsForExlude = [];
 
     $.getJSON("/muncher/getProdacts", function(data) {
 
@@ -23,32 +24,50 @@ $(document).ready(function() {
             itemsForShoppingList.push("</td>");
 
             itemsForShoppingList.push("<td>");
-            itemsForShoppingList.push("<input id='"+entry._id+"' type=\"number\" value='0' min='0'");
+            itemsForShoppingList.push("<input id='"+entry._id+"' class='shopping_list_item' type=\"number\" value='0' min='0'");
             itemsForShoppingList.push("</td>");
 
             itemsForShoppingList.push("</tr>");
             
-            itemsForSupriseBox.push("<tr>");
+            itemsForInclude.push("<tr>");
 
-            itemsForSupriseBox.push("<td>");
-            itemsForSupriseBox.push("<img src='");
-            itemsForSupriseBox.push(entry.img);
-            itemsForSupriseBox.push("'></td>");
+            itemsForInclude.push("<td>");
+            itemsForInclude.push("<img src='");
+            itemsForInclude.push(entry.img);
+            itemsForInclude.push("'></td>");
 
-            itemsForSupriseBox.push("<td>");
-            itemsForSupriseBox.push(entry.name);
-            itemsForSupriseBox.push("</td>");
+            itemsForInclude.push("<td>");
+            itemsForInclude.push(entry.name);
+            itemsForInclude.push("</td>");
 
-            itemsForSupriseBox.push("<td>");
-            itemsForSupriseBox.push("<input type=\"checkbox\" id='"+entry._id+"' type=\"number\"");
-            itemsForSupriseBox.push("</td>");
+            itemsForInclude.push("<td>");
+            itemsForInclude.push("<input type=\"checkbox\" class='include_list_item' id='"+entry._id+"'");
+            itemsForInclude.push("</td>");
 
-            itemsForSupriseBox.push("</tr>");
+            itemsForInclude.push("</tr>");
+            
+            itemsForExlude.push("<tr>");
+
+            itemsForExlude.push("<td>");
+            itemsForExlude.push("<img src='");
+            itemsForExlude.push(entry.img);
+            itemsForExlude.push("'></td>");
+
+            itemsForExlude.push("<td>");
+            itemsForExlude.push(entry.name);
+            itemsForExlude.push("</td>");
+
+            itemsForExlude.push("<td>");
+            itemsForExlude.push("<input type=\"checkbox\" class='exlude_list_item' id='"+entry._id+"'");
+            itemsForExlude.push("</td>");
+
+            itemsForExlude.push("</tr>");
 
         });
 
         $('#shopinglist_placeHolder').replaceWith(itemsForShoppingList.join(''));
-        $('.surprise_box_placeHolder').replaceWith(itemsForSupriseBox.join(''));
+        $('#surprise_box_placeHolder_include').replaceWith(itemsForInclude.join(''));
+        $('#surprise_box_placeHolder_exclude').replaceWith(itemsForExlude.join(''));
     });
 
 });

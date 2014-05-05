@@ -85,7 +85,7 @@ and open the template in the editor.
                     <input id="shoping_list_filter" data-type="search" placeholder="Search..">
                 </form>
 
-                <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#shoping_list_filter">
+                <table id='shoping_list_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#shoping_list_filter">
                     <tr>
                         <th>Img</th>
                         <th>Name</th>
@@ -102,7 +102,7 @@ and open the template in the editor.
             </div>
 
             <div data-role="panel" id="right-panel-slist" data-display="overlay" data-position="right" data-theme="c">
-                <p>no previous orders</p>
+                <div id="history_shopingList_placeHolder"></div>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->
         </div> 
@@ -114,7 +114,7 @@ and open the template in the editor.
                 <a href="#right-panel-sbox" data-icon="plus" class="ui-icon-nodisc">previous orders</a>
             </div>
 
-            <div data-role="main" class="ui-content">
+            <div id="surprise_box_info" data-role="main" class="ui-content">
                 <h2>sweet salt amount in box</h2>
                 <label id='salt_sweet_label' for="salt_sweet_slider"><span id='sweet_label'>Sweet</span><span id='salt_label'>Salt</span></label>
                 <input id='salt_sweet_slider' data-highlight="false" type="range" value="50" min="0" max="100" data-popup-enabled="false">
@@ -148,7 +148,7 @@ and open the template in the editor.
                                 <th>Name</th>
                                 <th>Is Selected</th>
                             </tr>
-                            <tr class="surprise_box_placeHolder"></tr>
+                            <tr id="surprise_box_placeHolder_include"></tr>
                         </table>
                     </div>
 
@@ -164,7 +164,7 @@ and open the template in the editor.
                                 <th>Name</th>
                                 <th>Is Selected</th>
                             </tr>
-                            <tr class="surprise_box_placeHolder"></tr>
+                            <tr id="surprise_box_placeHolder_exclude"></tr>
                         </table>
                     </div>
 
@@ -178,7 +178,7 @@ and open the template in the editor.
             </div>
 
             <div data-role="panel" id="right-panel-sbox" data-display="overlay" data-position="right" data-theme="c">
-                <p>no previous orders</p>
+                <div id="history_surprise_box_placeHolder"></div>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->
         </div>
@@ -201,7 +201,7 @@ and open the template in the editor.
             </div>
 
             <div data-role="panel" id="right-panel-addres" data-display="overlay" data-position="right" data-theme="c">
-                <p>no previous address</p>
+                <div id="history_address_placeHolder"></div>
                 <a href="#" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">Close</a>
             </div><!-- /panel -->
         </div>
