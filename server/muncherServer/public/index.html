@@ -9,14 +9,15 @@ and open the template in the editor.
         <title>Muncher</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="js/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css" />
-        <link rel="stylesheet" href="css/cssCode.css" />
-        <script src="js/jQuery1.11.0.js"></script>
-        <script src="js/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
-        <script src="js/javaScriptCode.js"></script>
+        <link rel="stylesheet" href="javascripts/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css" />
+        <link rel="stylesheet" href="stylesheets/cssCode.css" />
+        <script src="javascripts/jQuery1.11.0.js"></script>
+        <script src="javascripts/jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        <script src="javascripts/javaScriptCode.js"></script>
+        <script src="javascripts/prodacts.js"></script>
 
         <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-        <script src="js/jquery.geocomplete.js"></script>
+        <script src="javascripts/jquery.geocomplete.js"></script>
 
     </head>
     <body>
@@ -86,12 +87,12 @@ and open the template in the editor.
 
                 <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#shoping_list_filter">
                     <tr>
-                        <th>ID</th>
                         <th>Img</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Amount</th>
                     </tr>
+                    <tr id="shopinglist_placeHolder"></tr>
                 </table>
                 <button onclick='goToAddres()'>Next</button>
             </div>
@@ -143,11 +144,11 @@ and open the template in the editor.
 
                         <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#include">
                             <tr>
-                                <th>ID</th>
                                 <th>Img</th>
                                 <th>Name</th>
                                 <th>Is Selected</th>
                             </tr>
+                            <tr class="surprise_box_placeHolder"></tr>
                         </table>
                     </div>
 
@@ -157,13 +158,13 @@ and open the template in the editor.
                             <input id="exclude" data-type="search" placeholder="Search..">
                         </form>
 
-                        <table id='include_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#exclude">
+                        <table id='exclude_table' data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" data-filter="true" data-input="#exclude">
                             <tr>
-                                <th>ID</th>
                                 <th>Img</th>
                                 <th>Name</th>
                                 <th>Is Selected</th>
                             </tr>
+                            <tr class="surprise_box_placeHolder"></tr>
                         </table>
                     </div>
 

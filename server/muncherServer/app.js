@@ -1,6 +1,3 @@
-//OpenShift varubles
-#!/bin/env node
-
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
@@ -10,12 +7,16 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+// New Code
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/muncher');
+
 //muncher path
 var muncher = require('./routes/muncher'); 
 
 var app = express();
-
-//OpenShift varubles
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +28,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
 
 app.use('/', routes);
 app.use('/users', users);

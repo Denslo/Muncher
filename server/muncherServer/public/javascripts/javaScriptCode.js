@@ -140,3 +140,5 @@ function login() {
         $.mobile.changePage("#page_order_type", {transition: "slide"});
     }
 }
+
+var prodracts = {};
