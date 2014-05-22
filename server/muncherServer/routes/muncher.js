@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-/*
 router.get('/insertToDB', function(req, res) {
     var db = req.db;
     var collection = db.get('pordactcolection');
@@ -23,13 +22,15 @@ router.get('/insertToDB', function(req, res) {
         }];
 
     document.forEach(function(e) {
+        
         collection.insert(e, function(err, doc) {
             if (err === null) {
-                res.send(doc._id);
+                
             }
         });
+        res.send(200);
     })
-});*/
+});
 
 
 router.get('/getProdacts', function(req, res) {
